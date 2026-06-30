@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+:root {
+  /* ── Color tokens ─────────────────────────────────────────── */
+  --void: #07080b;
+  --void-soft: #0c0e13;
+  --elevated: #12141b;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --ink: #f3f4f6;
+  --ink-muted: #9aa0ad;
+  --ink-faint: #5c6270;
+
+  --violet: #8b5cf6;
+  --violet-soft: rgba(139, 92, 246, 0.16);
+  --magenta: #ff3d81;
+  --cyan: #34f5c5;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@theme inline {
+  --color-void: var(--void);
+  --color-void-soft: var(--void-soft);
+  --color-elevated: var(--elevated);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-violet: var(--violet);
+  --color-magenta: var(--magenta);
+  --color-cyan: var(--cyan);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--void);
+  color: var(--ink);
+  font-family: var(--font-body);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(139, 92, 246, 0.18), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 10%, rgba(255, 61, 129, 0.08), transparent);
+  background-repeat: no-repeat;
+}
+
+::selection {
+  background: var(--violet);
+  color: white;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 99px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Glass panel utility */
+.glass {
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--line);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #ffffff 0%, #d9d4ff 45%, var(--violet) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Timeline ruler tick pattern, used in hero */
+.timeline-ticks {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--line) 0px,
+    var(--line) 1px,
+    transparent 1px,
+    transparent 40px
+  );
+}
